@@ -21,7 +21,8 @@ RUN npm run build
 # ---------------------------------
 
 FROM nginx
-
+# 맵핑할 포트 정의
+EXPOSE 80
 # 다른 stage에 있는 파일을 복사할 땐
 # 해당 stage의 이름을 명시
 COPY --from=builder /usr/scr/app/build /usr/share/nginx/html

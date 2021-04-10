@@ -30,3 +30,7 @@ deploy:
   on:
     # 어떤 브랜치의 push할 때 배포 할 것인지
     branch: master
+  # AWS IAM에서 발급받은 엑세스키들을
+  # Travis CI에 환경변수로 등록하여 사용
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
