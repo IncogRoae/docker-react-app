@@ -22,7 +22,7 @@ deploy:
   region: "ap-northeast-2"
   # app 이름
   app: "docker-react-app"
-  env: "Docker-React-App-env"
+  env: "Dockerreactapp-env"
   # Elastic Beanstalk에서 생성한 S3 이름
   bucket_name: "elasticbeanstalk-ap-northeast-2-313521353063"
   # app 이름과 동일
