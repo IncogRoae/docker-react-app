@@ -1,0 +1,19 @@
+sudo: required
+
+language: generic
+
+# 도커 환경 구성
+services:
+  - docker
+
+# 스크립트를 실행 할 수 있는 환경 구성
+# 도커 이미지 생성
+before_install:
+  - echo "Create dockerfile image"
+  - docker build -t novitative/docker-react-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true novitative/docker-react-app npm run test -- -- coverage
+
+after_success:
+  - echo "Test Success"
