@@ -1,0 +1,17 @@
+FROM node:alpine
+
+WORKDIR /usr/scr/app
+
+# 내부 소스 코드가 바뀔때 마다
+# npm install로 종속정 있는 모듈들을 다운받는
+# 불 필요한 상황을 막기 위해
+# 우선적으로 denedency가 있는 모듈이
+# 명시되어 있는 pakcage.json 파일 부터 복사 후
+# npm install을 진행
+COPY package.json ./
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "run", "start"]

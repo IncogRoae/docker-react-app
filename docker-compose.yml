@@ -1,0 +1,30 @@
+# docker compose version
+version: "3"
+
+# 각 컨테이너들의 대한 정의
+services: 
+  # 컨테이너 이름
+  react:
+    # 현재 디렉토리에 있는 dockerfile 사용
+    build:
+      # 도커 이미지를 구성하기 위한 파일들의 대한 경로
+      context: .
+      # 도커 파일 명시
+      dockerfile: Dockerfile.dev
+    # 포트 맵핑 [local port : mapping port]
+    ports: 
+      - "3000:3000"
+    # 로컬 머신에 있는 파일들 맵핑
+    volumes:  
+      - /usr/scr/app/node_modules
+      - ./:/usr/scr/app
+    stdin_open: true
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:  
+      - /usr/scr/app/node_modules
+      - ./:/usr/scr/app
+    # 테스트 컨테이너 실행시 실행될 커맨드
+    command: ["npm", "run", "test"]
